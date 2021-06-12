@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Nav, NavItem, Navbar } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
+import API_URL from './constants/urls';
 import PizzaForm from './components/PizzaForm';
 import Home from './components/Home';
+import axios from "axios";
 
 const initialFormValues = [{
   name: '',
@@ -38,7 +39,19 @@ const App = () => {
       toppings: selectedToppings,
       special: formValues.special,
     }
-    setOrders([...orders, newOrder])
+    
+    postNewOrder(newOrder)
+  }
+
+  const postNewOrder = newOrder => {
+    axios.post(API_URL, newOrder)
+      .then(res => {
+        setOrders([...orders, newOrder])
+      })
+      .catch(err => console.log(err))
+      .finally(
+        setFormValues(initialFormValues)
+      )
   }
 
   return (
