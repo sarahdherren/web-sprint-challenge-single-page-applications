@@ -1,0 +1,55 @@
+$primary: #FFCAAE;
+
+$secondary: #8FD2FC;
+
+$success: #548700;
+
+$warning: #FFE45D;
+
+$danger: #870016;
+
+#root {
+    background-color: $primary;
+    color: #682400;
+}
+#root > div > div.image-border {
+    background-color: #682400;
+    min-height: 290px;
+}
+#root > div > div.image-border > img {
+    margin-top: 15px;
+}
+
+#root > div > div:nth-child(2) {
+    height: 100vh;
+    margin: 50px;
+}
+
+#root > nav > span {
+    h1{
+        font-size: 2rem;
+        font-weight: 700;
+        color: #682400;
+    }
+    h3{
+        font-size: 1rem;
+        color: #872F00;
+    }
+  }
+
+  #root > nav > div > div > a{
+      color: #682400;
+      border-radius: 15px;
+      font-weight: 700;
+      &:focus{
+        background-color: #682400;
+        color: $primary;  
+      }
+      }
+      
+#root > div > img{
+    max-height: 30vh;
+    min-width: 100vw;
+    object-fit: cover;
+}
+@import "~bootstrap/scss/bootstrap.scss";
