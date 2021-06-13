@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Nav, NavItem, Navbar } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import API_URL from './constants/urls';
 import PizzaForm from './components/PizzaForm';
 import Home from './components/Home';
@@ -92,7 +92,7 @@ const App = () => {
   }
 
   return (
-    <Router>
+    <div>
       <Navbar bg='primary'>
         <Navbar.Brand href='/' >
           <img src={logo.default} style={{maxWidth: "10vw"}} alt='pizza logo'/>
@@ -120,7 +120,7 @@ const App = () => {
         </Route>
         <Route exact path='/' component={Home} />
       </Switch>
-      </Router>
+      </div>
   );
 };
 export default App;
