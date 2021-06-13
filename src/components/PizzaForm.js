@@ -1,35 +1,38 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap'
+import InputGroupWithExtras from 'react-bootstrap/esm/InputGroup';
 
 const imageHero = require('../designFiles/pizzaPie.jpg');
 
 const sauceChoices = ['Traditional', 'Spicy Red Pepper', "Creamy Garlic Butter", "BBQ"];
 
-const toppings = ['Pepperoni', 'Sausage', 'Canadian Bacon', 'Spicey Italian Sausage', 'onions',
-    'Green Peppers', 'Diced Tomatoes', 'Black Olives', 'Roasted Garlic', 'Artichoke Hearts', 'Three Cheese',
-    'Pineapple', 'Extra Cheese' ];
+const toppings = ['Pepperoni', 'Sausage', 'CanadianBacon', 'SpicyItalianSausage', 'onions',
+    'GreenPeppers', 'DicedTomatoes', 'BlackOlives', 'RoastedGarlic', 'ArtichokeHearts', 'ThreeCheese',
+    'Pineapple', 'ExtraCheese' ];
 
-const PizzaForm = ({ submit, update, values, updateToppings }) => {
+const PizzaForm = ({ submit, update, values }) => {
 
     
 
     const changeHandler = (e) => {
-        const { name, value, checked, type } = e.target;
-        const valueToUse = type === 'checkbox' ? checked : value;
+        const { name, value, checked, type } = e.target
+        const valueToUse = type === 'checkbox' ? checked : value
 
         update(name, valueToUse)
 
     }
 
-    const toppingHandler = (e) => {
-        const topping = e.target.name
-    
-        updateToppings(topping)
-    }
-
     const submitHandler = (e, selectedToppings) => {
         e.preventDefault()
         submit(e, selectedToppings)
+        resetForm()
+    }
+
+    const resetForm = () => {
+        const inputs = document.querySelectorAll("input[type='checkbox']");
+            for(let i=0; i< inputs.length; i++) {
+                inputs[i].checked = false;
+            }
     }
 
     return(
@@ -39,7 +42,7 @@ const PizzaForm = ({ submit, update, values, updateToppings }) => {
             <Form id='pizza-form' onSubmit={submitHandler} >
                 <Form.Group >
                     <Form.Label className='labels'>Name</Form.Label>
-                    <Form.Control id='name-input' type='text' placeholder="Enter Customer Name" name='name' value={values.name} onChange={changeHandler} />
+                    <Form.Control id='name-input' type='text' placeholder="Enter Customer Name" name='customerName' value={values.customerName} onChange={changeHandler} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label className='labels'>Choice of Size</Form.Label>
@@ -52,15 +55,15 @@ const PizzaForm = ({ submit, update, values, updateToppings }) => {
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
-                    {sauceChoices.map((sauceName) => (
+                    {sauceChoices.map(sauceName => (
                         <div key={sauceName} className="mb-3">
                           <Form.Check 
+                            id='checkbox'
                             type='radio'
-                            id={sauceName}
                             label={sauceName}
                             name='sauce'
                             value={sauceName}
-
+                            checked={values.sauce === sauceName}
                             onChange={changeHandler}
                           />
                         </div>
@@ -69,14 +72,14 @@ const PizzaForm = ({ submit, update, values, updateToppings }) => {
                 <Form.Group>
                     <Form.Label className='labels'>Add Toppings</Form.Label>
                     <div className='toppings'>
-                    {toppings.map((toppingName, index) => (
-                        <div key={toppingName} className="mb-3">
+                    {toppings.map((topping, i) => (
+                        <div key={topping} className="mb-3">
                           <Form.Check 
                             type='checkbox'
-                            label={toppingName}
-                            name={toppingName}
-                            checked={values.toppingName}
-                            onChange={toppingHandler}
+                            label={topping}
+                            name={topping}
+                            checked={values.topping}
+                            onChange={changeHandler}
                           />
                         </div>
                       ))}

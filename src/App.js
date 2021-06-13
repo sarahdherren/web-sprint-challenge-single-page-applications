@@ -7,36 +7,55 @@ import PizzaForm from './components/PizzaForm';
 import Home from './components/Home';
 import axios from "axios";
 
-const initialFormValues = [{
-  name: '',
+const initialFormValues = {
+  customerName: '',
   size: '',
   sauce: '',
-  toppings: [],
+  Pepperoni: false,
+  Sausage: false,
+  CanadianBacon: false,
+  SpicyItalianSausage: false,
+  onions: false,
+  GreenPeppers: false,
+  DicedTomatoes: false,
+  BlackOlives: false,
+  RoastedGarlic: false,
+  ArtichokeHearts: false,
+  ThreeCheese: false,
+  Pineapple: false,
+  ExtraCheese: false,
   special: '',
-}]
+}
 
 const App = () => {
 
   const[orders, setOrders] = useState([]);
   const[formValues, setFormValues] = useState(initialFormValues);
-  const[selectedToppings, setSelectedToppings] = useState([]);
 
   const logo = require('./designFiles/logo.png')
 
-  const updateForm = (inputName, inputValue) => {
-    setFormValues({...formValues, [inputName]: inputValue})
-  }
-
-  const updateToppings = (topping) => {
-    setSelectedToppings([...selectedToppings, topping]);
+  const updateForm = (name, value) => {
+    setFormValues({...formValues, [name]: value})
   }
 
   const submitForm = () => {
     const newOrder = {
-      name: formValues.name.trim(),
+      name: formValues.customerName.trim(),
       size: formValues.size.trim(),
       sauce: formValues.sauce,
-      toppings: selectedToppings,
+      Pepperoni: formValues.Pepperoni,
+      Sausage: formValues.Sausage,
+      CanadianBacon: formValues.CanadianBacon,
+      SpicyItalianSausage: formValues.SpicyItalianSausage,
+      onions: formValues.onions,
+      GreenPeppers: formValues.GreenPeppers,
+      DicedTomatoes: formValues.DicedTomatoes,
+      BlackOlives: formValues.BlackOlives,
+      RoastedGarlic: formValues.RoastedGarlic,
+      ArtichokeHearts: formValues.ArtichokeHearts,
+      ThreeCheese: formValues.ThreeCheese,
+      Pineapple: formValues.Pineapple,
+      ExtraCheese: formValues.ExtraCheese,
       special: formValues.special,
     }
     
@@ -49,9 +68,10 @@ const App = () => {
         setOrders([...orders, newOrder])
       })
       .catch(err => console.log(err))
-      .finally(
+      .finally(res => {
         setFormValues(initialFormValues)
-      )
+        
+      })
   }
 
   return (
@@ -79,7 +99,7 @@ const App = () => {
       </Navbar>
       <Switch>
         <Route path='/pizza' >
-            <PizzaForm submit={submitForm} update={updateForm} values={formValues} updateToppings={updateToppings}/>
+            <PizzaForm submit={submitForm} update={updateForm} values={formValues} />
         </Route>
         <Route path='/' component={Home} />
       </Switch>
