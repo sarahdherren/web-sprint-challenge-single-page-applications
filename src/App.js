@@ -103,13 +103,13 @@ const App = () => {
         </Navbar.Brand>
         <Navbar.Collapse className='justify-content-end'>
         <NavItem>
-          <LinkContainer to='/'> 
-            <Nav.Link >Home</Nav.Link>
+          <LinkContainer to='/pizza' id='order-pizza'>
+            <Nav.Link >Order</Nav.Link>
           </LinkContainer>
         </NavItem>
         <NavItem>
-          <LinkContainer to='/pizza' id='order-pizza'>
-            <Nav.Link >Order</Nav.Link>
+          <LinkContainer to='/'> 
+            <Nav.Link >Home</Nav.Link>
           </LinkContainer>
         </NavItem>
         </Navbar.Collapse>
