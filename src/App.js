@@ -115,7 +115,7 @@ const App = () => {
         </Navbar.Collapse>
       </Navbar>
       <Switch>
-        <Route path='/pizza' >
+        <Route id='order-pizza' path='/pizza' >
             <PizzaForm submit={submitForm} update={updateForm} values={formValues} errors={formErrors} />
         </Route>
         <Route path='/' component={Home} />
