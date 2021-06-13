@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap'
-import InputGroupWithExtras from 'react-bootstrap/esm/InputGroup';
 
 const imageHero = require('../designFiles/pizzaPie.jpg');
 
