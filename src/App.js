@@ -94,7 +94,7 @@ const App = () => {
   return (
     <Router>
       <Navbar bg='primary'>
-        <Navbar.Brand href='/' >
+        <Navbar.Brand >
           <img src={logo.default} style={{maxWidth: "10vw"}} alt='pizza logo'/>
         </Navbar.Brand>
         <Navbar.Brand className='header '>
@@ -102,11 +102,13 @@ const App = () => {
           <h3>Your favorite food, delivered while coding</h3>
         </Navbar.Brand>
         <Navbar.Collapse className='justify-content-end'>
-        <NavItem>
-          <LinkContainer to='/pizza' id='order-pizza'>
-            <Nav.Link to='/pizza' id='order-pizza'>Order</Nav.Link>
-          </LinkContainer>
-        </NavItem>
+       
+          <NavItem id="order-pizza">
+            <LinkContainer to='/pizza'>
+              <Nav.Link>Order</Nav.Link>
+            </LinkContainer>
+          </NavItem>
+ 
         <NavItem>
           <LinkContainer to='/'> 
             <Nav.Link >Home</Nav.Link>
