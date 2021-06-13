@@ -116,7 +116,7 @@ const App = () => {
       </Navbar>
       <Switch>
         <Route path='/pizza' >
-            <PizzaForm submit={submitForm} update={updateForm} values={formValues} />
+            <PizzaForm submit={submitForm} update={updateForm} values={formValues} errors={formErrors} />
         </Route>
         <Route path='/' component={Home} />
       </Switch>

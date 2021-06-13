@@ -9,7 +9,7 @@ const toppings = ['Pepperoni', 'Sausage', 'CanadianBacon', 'SpicyItalianSausage'
     'GreenPeppers', 'DicedTomatoes', 'BlackOlives', 'RoastedGarlic', 'ArtichokeHearts', 'ThreeCheese',
     'Pineapple', 'ExtraCheese' ];
 
-const PizzaForm = ({ submit, update, values }) => {
+const PizzaForm = ({ submit, update, values, errors }) => {
 
     
 
@@ -41,7 +41,10 @@ const PizzaForm = ({ submit, update, values }) => {
             <Form id='pizza-form' onSubmit={submitHandler} >
                 <Form.Group >
                     <Form.Label className='labels'>Name</Form.Label>
-                    <Form.Control id='name-input' type='text' placeholder="Enter Customer Name" name='customerName' value={values.customerName} onChange={changeHandler} />
+                        <Form.Control id='name-input' type='text' placeholder="Enter Customer Name" name='customerName' value={values.customerName} onChange={changeHandler} />
+                    <Form.Text className='text-muted'>
+                        {errors.customerName}
+                    </Form.Text>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label className='labels'>Choice of Size</Form.Label>
