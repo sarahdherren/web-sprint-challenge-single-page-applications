@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Nav, NavItem, Navbar } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import API_URL from './constants/urls';
 import PizzaForm from './components/PizzaForm';
 import Home from './components/Home';
@@ -103,9 +103,7 @@ const App = () => {
         </Navbar.Brand>
         <Navbar.Collapse className='justify-content-end'>
         <NavItem>
-          <LinkContainer id='order-pizza' to='/pizza'>
-            <Nav.Link >Order</Nav.Link>
-          </LinkContainer>
+          <Link id='order-pizza' to='/pizza'>Order</Link>
         </NavItem>
         {/* <NavItem>
           <LinkContainer to='/'> 
