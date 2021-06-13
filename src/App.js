@@ -40,7 +40,7 @@ const App = () => {
 
   const submitForm = () => {
     const newOrder = {
-      name: formValues.customerName.trim(),
+      customerName: formValues.customerName.trim(),
       size: formValues.size.trim(),
       sauce: formValues.sauce,
       Pepperoni: formValues.Pepperoni,
@@ -91,8 +91,8 @@ const App = () => {
           </LinkContainer>
         </NavItem>
         <NavItem>
-          <LinkContainer to='/pizza'>
-            <Nav.Link id='order-pizza'>Order</Nav.Link>
+          <LinkContainer to='/pizza' id='order-pizza'>
+            <Nav.Link >Order</Nav.Link>
           </LinkContainer>
         </NavItem>
         </Navbar.Collapse>
