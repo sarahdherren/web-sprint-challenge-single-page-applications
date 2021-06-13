@@ -28,7 +28,7 @@ const formSchema = yup.object().shape({
         .boolean(),
     RoastedGarlic: yup
         .boolean(),
-    ArtichokeHeart: yup
+    ArtichokeHearts: yup
         .boolean(),
     ThreeCheese: yup
         .boolean(),

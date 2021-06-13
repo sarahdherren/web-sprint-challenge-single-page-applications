@@ -9,7 +9,7 @@ describe('Pizza Form', () => {
     })
 
     const name = () => cy.get("#name-input")
-    const checkboxes = () => cy.get('.toppings')
+    const checkboxes = () => cy.get('.form-check-input')
     const submit = () => cy.get('#order-button')
     const select = () => cy.get('#size-dropdown')
     
@@ -26,12 +26,12 @@ describe('Pizza Form', () => {
     })
 
     it('can check multiple topping options', () => {
-        checkboxes().check
+        checkboxes().check()
     })
 
     it('can submit form', () => {
         name().type('Kenneth')
-        submit().click
+        submit().click()
     })
 
 })

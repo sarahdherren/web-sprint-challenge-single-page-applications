@@ -73,19 +73,17 @@ const PizzaForm = ({ submit, update, values, errors }) => {
                       </Form.Group>
                 <Form.Group>
                     <Form.Label className='labels'>Add Toppings</Form.Label>
-                    <div className='toppings'>
                     {toppings.map((topping, i) => (
-                        <div key={topping} className="mb-3">
                           <Form.Check 
+                            className='toppings'
+                            key={topping}
                             type='checkbox'
                             label={topping}
                             name={topping}
                             checked={values.topping}
                             onChange={changeHandler}
                           />
-                        </div>
                       ))}
-                      </div>
                 </Form.Group>
                 <Form.Group>
                     <Form.Label className='labels'>Special Instructions</Form.Label>
