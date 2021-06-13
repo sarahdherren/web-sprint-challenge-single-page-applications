@@ -107,11 +107,11 @@ const App = () => {
             <Nav.Link >Order</Nav.Link>
           </LinkContainer>
         </NavItem>
-        <NavItem>
+        {/* <NavItem>
           <LinkContainer to='/'> 
             <Nav.Link >Home</Nav.Link>
           </LinkContainer>
-        </NavItem>
+        </NavItem> */}
         </Navbar.Collapse>
       </Navbar>
       <Switch>
