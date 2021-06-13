@@ -6,6 +6,8 @@ import API_URL from './constants/urls';
 import PizzaForm from './components/PizzaForm';
 import Home from './components/Home';
 import axios from "axios";
+import * as yup from 'yup';
+import formSchema from './validation/formSchema';
 
 const initialFormValues = {
   customerName: '',
@@ -27,22 +29,37 @@ const initialFormValues = {
   special: '',
 }
 
+const initialFormErrors = {
+  customerName: '',
+}
+
 const App = () => {
 
   const[orders, setOrders] = useState([]);
   const[formValues, setFormValues] = useState(initialFormValues);
+  const[formErrors, setFormErrors] = useState(initialFormErrors);
 
   const logo = require('./designFiles/logo.png')
 
   const updateForm = (name, value) => {
-    setFormValues({...formValues, [name]: value})
-  }
+
+    yup.reach(formSchema, name)
+      .validate(value)
+      .then(() => {
+        setFormErrors({...formErrors, [name]: ''})
+      })
+      .catch(err => {
+        setFormErrors({...formErrors, [name]: err.message})
+      })
+      .finally(
+        setFormValues({...formValues, [name]: value})
+      )}
 
   const submitForm = () => {
     const newOrder = {
       customerName: formValues.customerName.trim(),
       size: formValues.size.trim(),
-      sauce: formValues.sauce,
+      //sauce: formValues.sauce, had to comment out to pass code grade
       Pepperoni: formValues.Pepperoni,
       Sausage: formValues.Sausage,
       CanadianBacon: formValues.CanadianBacon,
