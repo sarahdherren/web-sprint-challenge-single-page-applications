@@ -9,7 +9,7 @@ const toppings = ['Pepperoni', 'Sausage', 'CanadianBacon', 'SpicyItalianSausage'
     'GreenPeppers', 'DicedTomatoes', 'BlackOlives', 'RoastedGarlic', 'ArtichokeHearts', 'ThreeCheese',
     'Pineapple', 'ExtraCheese' ];
 
-const PizzaForm = ({ submit, update, values, errors }) => {
+const PizzaForm = ({ submit, update, values, errors, disabled }) => {
 
     
 
@@ -21,9 +21,9 @@ const PizzaForm = ({ submit, update, values, errors }) => {
 
     }
 
-    const submitHandler = (e, selectedToppings) => {
+    const submitHandler = (e) => {
         e.preventDefault()
-        submit(e, selectedToppings)
+        submit(e)
         resetForm()
     }
 
@@ -89,7 +89,7 @@ const PizzaForm = ({ submit, update, values, errors }) => {
                     <Form.Label className='labels'>Special Instructions</Form.Label>
                     <Form.Control id='special-text' as='textarea' name='special' value={values.special} rows={3} maxLength='250' onChange={changeHandler} />
                 </Form.Group>
-                <Button id='order-button' type='submit'>Submit Order</Button>
+                <Button disabled={disabled} id='order-button' type='submit'>Submit Order</Button>
             </Form>
         </div>
     )

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Nav, NavItem, Navbar } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap';
 import { Route, Switch } from 'react-router-dom';
@@ -38,6 +38,7 @@ const App = () => {
   const[orders, setOrders] = useState([]);
   const[formValues, setFormValues] = useState(initialFormValues);
   const[formErrors, setFormErrors] = useState(initialFormErrors);
+  const[disabled, setDisabled] = useState(true);
 
   const logo = require('./designFiles/logo.png')
 
@@ -91,6 +92,13 @@ const App = () => {
       })
   }
 
+  useEffect(() => {
+    formSchema.isValid(formValues)
+      .then(valid => {
+        setDisabled(!valid)
+      })
+  }, [formValues])
+
   return (
     <div>
       <Navbar bg='primary'>
@@ -116,7 +124,7 @@ const App = () => {
       </Navbar>
       <Switch>
         <Route path='/pizza' >
-            <PizzaForm submit={submitForm} update={updateForm} values={formValues} errors={formErrors} />
+            <PizzaForm submit={submitForm} update={updateForm} values={formValues} errors={formErrors} disabled={disabled} />
         </Route>
         <Route exact path='/' component={Home} />
       </Switch>
